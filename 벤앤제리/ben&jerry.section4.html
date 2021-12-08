@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body,ul,li,a{
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+      color: #000;
+      list-style: none;
+      text-decoration: none;
+    }
+
+    .hidden {display: none;}
+    body{
+      width: 100vw;
+      height: 100vh;
+      background-color: wheat;
+    }
+
+    h1{display: flex; justify-content: center;}
+
+    #wrap {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+
+
+    li {
+      width: 25vw;
+      height: 7vh;
+      background-color: turquoise;
+      line-height: 7vh;
+      text-align: center;
+      box-shadow: 2vw 1vw 3vw #555;
+    }
+    #article-1{
+      width: 25vw; 
+      height: 40vh; 
+      background-color: white;
+      background-image: url(images/Layer-25_02.png);
+      background-size: 18vmax;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    #article-2{
+      width: 25vw; 
+      height: 40vh; 
+      background-color: white;
+      background-image: url(images/amicus-brief-rainbow400.png);
+      background-size: 16vmax;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    #article-3{
+      width: 25vw; 
+      height: 40vh; 
+      background-color: white;
+      background-image: url(images/scale.jpeg);
+      background-size: 18vmax;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    #article-4{
+      width: 25vw; 
+      height: 40vh; 
+      background-color: white;
+      background-image: url(images/globe-bJ-3.jpg);
+      background-size: 12vmax;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    /* JS 관련 class */
+    /* about accodianmenu */
+    .active, li:hover{background-color: paleturquoise;}
+
+    .content{
+      display: none;
+    }
+
+    /* about mouseover,mouseout */
+    #box{
+      width: 25vw;
+      height: 40vh;
+      background-color: black; 
+      opacity: 0.5;
+      position: relative;
+    }
+    p{
+      width: 20vw;
+      position: absolute;
+      margin-top: 10vh;
+      color: white; 
+      z-index: 999;
+      left: 40vw;
+      cursor: pointer;
+      text-align: center;
+      line-height: 5vh;
+    }
+
+  </style>
+</head>
+<body>
+    <h1>NEWS</h1>
+    <div id="wrap">
+      <ul >
+        <li class="button-1">
+          <a href="#">기후 운동에 참여하세요</a>
+        </li>
+        <section id = "article-1" class="content">
+          <div id="container" class="content">
+            <p >해수면 상승부터 점점 더 따듯해 지는 기온, 더욱 더 가공할 만한 허리케인과 토네이도까지, 기후 변화의 영향은 점점 더 심각해 지고 있습니다.</p>
+            <div id="box"></div>
+          </div>
+        </section>
+        <li class="button-2">
+          <a href="#">우리가 COP26에 관심을 가지는 이유</a>
+        </li>
+        <section id = "article-2" class="content">
+          <div id="container" class="content">
+          <p>왜 COP가 중요할까요? 모든 약어(IPCC! GHG! CO2)에서 길을 잃기 쉽지만 COP26은 "당사국 총회"의 줄임말로 UN기후변화협약에 가입한 197개 국가와 영토를 가리킵니다. </p>
+          <div id="box"></div>
+          </div>
+        </section>
+        <li class="button-3">
+          <a href="#">TOP of Ben&Jerry's Flavors of 2020</a>
+        </li>
+        <section id="article-3" class="content">
+          <div id="container" class="content">
+            <p>2020년 한해 동안 가장 사랑받았던 맛들의 랭킹을 만들어 보았습니다. 과연 상위권에 있는 맛들은 무엇일까요?</p>
+            <div id="box"></div>
+          </div>
+        </section>
+        <li class="button-4">
+          <a href="#">2020년 기후변화에 대한 긍정적 변화</a>
+        </li>
+        <section id="article-4" class="content">
+          <div id="container" class="content">
+            <p>2020년은 우리의 행성에게 있어 성공적인 한 해가 아니었습니다. 그러나 이러한 기후 위기가 심각해졌음에도 불구하고, 약간의 진전이 이루어지고 있습니다.</p>
+            <div id="box"></div>
+          </div>
+        </section>
+      </ul>
+  </div>
+
+  <script>
+  // 1. li를 클릭했을 때, section태그가 보이고 다시 클릭하면 보이지 않았으면 좋겠다.
+  // 2. section 안에 사진을 호버하면 어두운 배경이 깔리면서 짧은 글이 떳으면 좋겠다.
+  // 식별자 설정단계
+    const button = document.querySelectorAll('li');
+    const sectionTag = document.querySelectorAll('section');
+    const contantTag = document.querySelectorAll('#container');
+    
+    console.log(contantTag);
+    console.log(button);
+    console.log(sectionTag);
+    // console.log(text);
+    console.log(this)
+    for(let i =0; i<button.length; i++){
+      button[i].addEventListener('click',function(){
+        
+        this.classList.toggle('active');
+        //this는 식별자 맨앞에 이벤트를 주는 객체라고 생각하면 편함 여기서는 li들을 가르킴
+        // button 태그에 li에 호버하거나 클릭하면 배경색바꾸라고 토글줌
+        let sectionTag = this.nextElementSibling;
+        //같은 노드 레벨의 다음값을 가져오는데 element(요소)만 가져온다.
+        if(sectionTag.style.display === "block"){
+          sectionTag.style.display ="none";
+        }else{
+          sectionTag.style.display = "block";
+        }
+      });
+    }
+
+    // 2. section 안에 사진을 호버하면 어두운 배경이 깔리고 사진이 사라지면서 짧은 글이 떳으면 졸겠다.
+    // let index = 0
+    for(let i =0; i<sectionTag.length; i++){
+      sectionTag[i].addEventListener('mouseover',function(){
+        contantTag[i].style.display='block';
+      })
+    }
+
+    for(let i =0; i<sectionTag.length; i++){
+      sectionTag[i].addEventListener('mouseout',function(){
+        contantTag[i].style.display='none';
+      })
+    }
+
+
+//  1. li를 클릭했을 때, section태그가 보이고 다시 클릭하면 보이지 않았으면 좋겠다.
+    // buttonOne.addEventListener('click',function(event){
+    //   console.dir(event.target); //li
+    //   console.log(event.target.className); //button-$
+    //   let getClassLastString = event.target.className.charAt(event.target.className.length - 1);
+
+    //   console.log(getClassLastString);
+
+    //   let Index = Number(getClassLastString);
+    //   console.log(Index);
+
+    //   for(let i=0; i<sectionTag.length; i++){
+    //     if(sectionTag[i].classList.contains(`article-${Index}`)){
+    //       sectionTag[i].style.display = 'block'
+    //       text[i].style.display = 'none'
+    //     }else{
+    //       sectionTag[i].style.display ='none'
+    //       text[i].style.display = 'none'
+    //     }
+    //   }
+    // });
+    // 한번클릭하면 펼쳐지고 한번 클릭하면 접혔으면 좋겠는데 안됨 지금 a태그 때문에 접혔다 폈다 할 수 있는 것 같음
+    
+
+    
+
+
+
+
+
+  </script>
+</body>
+</html>
